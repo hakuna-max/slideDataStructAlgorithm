@@ -1,0 +1,5 @@
+{
+    "editor.formatOnSave": true,
+    "latex-workshop.latex.recipe.default": "latexmk (xelatex)"
+  }
+  
