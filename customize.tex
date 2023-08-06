@@ -1,0 +1,44 @@
+
+\usepackage{amsfonts,amsmath,oldgerm}
+\usepackage{clrscode4e}
+\usepackage{ctex}
+
+\usepackage{import}
+
+\usetheme{sintef}
+
+\newcommand{\testcolor}[1]{\colorbox{#1}{\textcolor{#1}{test}}~\texttt{#1}}
+
+\usefonttheme{serif}
+
+\titlebackground{images/background.png}
+
+\newcommand{\hrefcol}[2]{\textcolor{cyan}{\href{#1}{#2}}}
+
+
+% style of section presented in the table of contents
+\setbeamertemplate{section in toc}{$\blacktriangleright$~\inserttocsection}
+
+% style of subsection presented in the table of contents
+\setbeamertemplate{subsection in toc}{}
+% \setbeamertemplate{subsection in toc}{\footnotesize\hspace{1.2 em}$\blacktriangleright$~\inserttocsubsection}
+
+% automate subtitle of each frame
+% \makeatletter
+% \pretocmd\beamer@checkframetitle{\framesubtitle{\thesection \, \secname}}
+% \makeatother
+
+% avoid numbering of frames that are breaked into multiply slides
+\setbeamertemplate{frametitle continuation}{}
+
+% at the beginning of section, add table of contents with the current section highlighted
+\AtBeginSection[]
+{
+    \begingroup
+    \setbeamertemplate{footline}{}
+    \themecolor{blue}
+    \begin{frame}{Table of Contents}
+        \tableofcontents[currentsection]
+    \end{frame}
+    \endgroup
+}
