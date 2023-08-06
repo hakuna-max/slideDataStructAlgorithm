@@ -21,7 +21,6 @@
 
 \RequirePackage{etoolbox}
 \RequirePackage{tikz}
-\RequirePackage{listings}
 
 % Force 16:9 aspect ratio
 \RequirePackage{geometry}
@@ -39,7 +38,7 @@
 \newcommand{\@footlinepayoff}{\@SINTEFmotto}
 \setbeamertemplate{footline}{%
   \begin{beamercolorbox}[wd=\textwidth,ht=5mm,dp=3mm,rightskip=1cm]{footline}
-  \usebeamerfont{footline}\hfill\@footlinepayoff
+    \usebeamerfont{footline}\hfill\@footlinepayoff
   \end{beamercolorbox}
 }
 
@@ -59,32 +58,32 @@
 }
 \footlinecolor{} % Default: no footline
 
-\pgfdeclareimage[width=0.09\paperwidth]{bluelogo}{images/SINTEF_Logo_Sentrert_RGB}
-\pgfdeclareimage[width=0.09\paperwidth]{whitelogo}{images/SINTEF_Logo_Sentrert_Negativ_RGB}
+\pgfdeclareimage[width=0.09\paperwidth]{bluelogo}{images/upc_RGB}
+\pgfdeclareimage[width=0.09\paperwidth]{whitelogo}{images/upc_Negativ_RGB}
 \newcommand{\@SINTEFlogo}{bluelogo}
 
 % Set colours
-% NOTE! Beamer colors should be set in the preamble. It often works fine in the
+% NOTE! Beamer colors should be set in the preamble. It often works fine in the 
 %       document itself, but NOT for normal text foreground.
 %       \themecolor should only be called from the preamble.
 \newcommand{\themecolor}[1]{
-	\ifstrequal{#1}{blue}{%
-		\setbeamercolor{normal text}{fg=white,bg=sintefblue}
-		\setbeamercolor{structure}{fg=white}
-		\renewcommand{\@SINTEFlogo}{whitelogo}
-		\setbeamercolor{block title}{fg=sintefblue,bg=sintefgrey}
-		\setbeamercolor{block body}{fg=sintefblue,bg=sintefgrey}
-	}{%
-		\setbeamercolor{normal text}{fg=darkgray,bg=white}
-		\setbeamercolor{structure}{fg=sintefblue}
-		\renewcommand{\@SINTEFlogo}{bluelogo}
-		\setbeamercolor{block title}{fg=airforceblue,bg=morelightgray}
-		\setbeamercolor{block body}{fg=darkgray,bg=morelightgray}
-	}
+  \ifstrequal{#1}{blue}{%
+    \setbeamercolor{normal text}{fg=white,bg=sintefblue}
+    \setbeamercolor{structure}{fg=white}
+    \renewcommand{\@SINTEFlogo}{whitelogo}
+    \setbeamercolor{block title}{fg=sintefblue,bg=sintefgrey}
+    \setbeamercolor{block body}{fg=sintefblue,bg=sintefgrey}
+  }{%
+    \setbeamercolor{normal text}{fg=sintefblue,bg=white}
+    \setbeamercolor{structure}{fg=sintefblue}
+    \renewcommand{\@SINTEFlogo}{bluelogo}
+    \setbeamercolor{block title}{fg=white,bg=sintefblue}
+    \setbeamercolor{block body}{fg=white,bg=sintefblue}
+  }
 }
 \themecolor{white} % Default: white theme
 
-\setbeamercolor{title}{fg=sintefblue}
+\setbeamercolor{title}{fg=sintefblue,bg=white}
 \setbeamercolor{alerted text}{fg=sintefred}
 \setbeamercolor{author}{fg=black}
 \setbeamercolor{date}{fg=black}
@@ -96,11 +95,10 @@
 \setbeamerfont{frametitle}{series=\bfseries}
 \setbeamerfont{framesubtitle}{series=\mdseries}
 \setbeamerfont{footline}{size=\scriptsize}
-\setbeamerfont{block title}{series=\centering, size=\small}
-\setbeamerfont{block body}{size=\scriptsize}
+\setbeamerfont{block title}{series=\centering\bfseries}
 
 % Code to get prettier boxes
-\setbeamertemplate{blocks}[rounded]%, shadow=true]
+\setbeamertemplate{blocks}[rounded]
 
 % Bullets in several levels
 \setbeamertemplate{itemize item}{\textbullet}
@@ -108,13 +106,13 @@
 \setbeamertemplate{itemize subsubitem}{\ensuremath{\circ}}
 
 \newenvironment{colorblock}[3][white]{%
-	\begingroup
-	\setbeamercolor{block title}{fg=#1,bg=#2}
-	\setbeamercolor{block body} {fg=#1,bg=#2}
-	\begin{block}{#3}
-	}{%
-	\end{block}
-	\endgroup
+  \begingroup
+  \setbeamercolor{block title}{fg=#1,bg=#2}
+  \setbeamercolor{block body} {fg=#1,bg=#2}
+  \begin{block}{#3}
+    }{%
+  \end{block}
+  \endgroup
 }
 
 % Put the logo in each slide's top left area
@@ -130,10 +128,10 @@
 }
 
 % Define the title page
-\setbeamertemplate{title page}{
-  \vskip0pt plus 1filll
+\setbeamertemplate{title page}{%
+  \vskip0pt plus 1filll%
   \hspace{-12mm}% Pull back the box in an inelegant way - but it works!
-  \begin{beamercolorbox}[wd=0.9\textwidth,sep=10pt,leftskip=8mm]{title}
+  \begin{beamercolorbox}[wd=0.45\textwidth,sep=10pt,leftskip=8mm]{title}%
     {\usebeamerfont{title}\inserttitle}
 
     {\usebeamerfont{subtitle}\insertsubtitle}
@@ -148,9 +146,9 @@
   \rule{0.4\paperwidth}{0pt}%
   \begin{tikzpicture}
     \clip (-0.1\paperwidth,-0.5\paperheight) --
-          ( 0.5\paperwidth,-0.5\paperheight) --
-          ( 0.5\paperwidth, 0.5\paperheight) --
-          ( 0.1\paperwidth, 0.5\paperheight) -- cycle;
+    ( 0.5\paperwidth,-0.5\paperheight) --
+    ( 0.5\paperwidth, 0.5\paperheight) --
+    ( 0.1\paperwidth, 0.5\paperheight) -- cycle;
     \node at (0.2\paperwidth,0) {%
       \includegraphics[height=\paperheight]{#1}%
     };
@@ -162,13 +160,12 @@
 \newcommand{\titlebackground}{\@ifstar{\SplitBackground}{\FullBackground}}
 \newcommand{\FullBackground}[1]{\renewcommand{\@TitleBackground}{#1}}
 \newcommand{\SplitBackground}[1]{%
-	\booltrue{splittitle}%
-	\renewcommand{\@TitleBackground}{#1}%
+  \booltrue{splittitle}%
+  \renewcommand{\@TitleBackground}{#1}%
 }
 
 \renewcommand{\maketitle}{
-\begingroup
-  \setbeamertemplate{footline}{}
+  \begingroup
   \ifdefempty{\@TitleBackground}{}{% Skip if \@TitleBackground is empty
     \setbeamertemplate{background}{%
       \ifbool{splittitle}{%
@@ -179,9 +176,9 @@
     }
   }
   \begin{frame}%
-      \Large\titlepage%
+    \titlepage%
   \end{frame}%
-\endgroup
+  \endgroup
 }
 
 \newenvironment{chapter}[3][]{% Args: image (optional), color, frame title
@@ -204,11 +201,11 @@
     \end{beamercolorbox}
   }
   \begin{frame}{#3}
-  \hspace*{0.05\textwidth}%
-  \minipage{0.35\textwidth}%
-  \usebeamercolor[fg]{normal text}%
-}{%
-  \endminipage
+    \hspace*{0.05\textwidth}%
+    \minipage{0.35\textwidth}%
+    \usebeamercolor[fg]{normal text}%
+    }{%
+    \endminipage
   \end{frame}
   \endgroup
 }
@@ -216,8 +213,8 @@
 \newenvironment{sidepic}[2]{% Args: image, frame title
   \begingroup
   \setbeamertemplate{background}{%
-  \hspace*{0.6\paperwidth}%
-  \includegraphics[height=\paperheight]{#1}%
+    \hspace*{0.6\paperwidth}%
+    \includegraphics[height=\paperheight]{#1}%
   }
   \setbeamertemplate{frametitle}{% Same as normal, but with right skip
     \vspace*{-3.5ex}
@@ -227,33 +224,25 @@
     \end{beamercolorbox}
   }
   \begin{frame}{#2}
-  \minipage{0.6\textwidth}%
-}{%
-  \endminipage
+    \minipage{0.6\textwidth}%
+    }{%
+    \endminipage
   \end{frame}
   \endgroup
 }
 
-\newcommand{\@SINTEFmotto}{}
+\newcommand{\@SINTEFmotto}{Thank you for listening! \\ Your feedback will be highly appreciated!}
 \newcommand{\setmotto}{\renewcommand{\@SINTEFmotto}}
 \newcommand{\backmatter}{
-\begingroup
+  \begingroup
   \setbeamertemplate{footline}{}
   \themecolor{blue}
-  \begin{frame}[c]{}
+  \begin{frame}[c]
     \centering
     \begin{minipage}{\textwidth}
-    	\usebeamercolor[fg]{normal text}
-	    \centering
-        \Huge $$\mathcal Q \& \mathcal A$$
-    	\Large \textsl{Thank you for listening! \\ Your feedback will be highly appreciated!}
+      \usebeamercolor[fg]{normal text}
+      \centering\huge{\@SINTEFmotto}
     \end{minipage}
   \end{frame}
-\endgroup
+  \endgroup
 }
-
-% MY CUSTOMIZATION
-
-\newcommand{\strtoc}{Table of Contents}
-\newcommand{\strsubsec}{Section \thesection.\thesubsection}
-\input{customize}

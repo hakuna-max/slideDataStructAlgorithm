@@ -1,5 +1,13 @@
 {
-    "editor.formatOnSave": true,
-    "latex-workshop.latex.recipe.default": "latexmk (xelatex)"
-  }
-  
+  // vscode editor
+  "editor.formatOnSave": true,
+  "editor.wordWrap": "on",
+
+  // gitlens
+  "gitlens.currentLine.enabled": false,
+  // "gitlens.codeLens.authors.enabled": false,
+  "gitlens.codeLens.enabled": false,
+
+  // latex
+  "latex-workshop.latex.recipe.default": "latexmk (xelatex)"
+}
