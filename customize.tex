@@ -1,7 +1,10 @@
+\usepackage{xcolor} % needed for \textcolor
+
 
 \usepackage{amsfonts,amsmath,oldgerm}
 \usepackage{clrscode4e}
-\usepackage{ctex}
+\usepackage[fontset = fandol]{ctex}
+
 
 \usepackage{import}
 
@@ -42,3 +45,8 @@
     \end{frame}
     \endgroup
 }
+
+
+% % redefine \emph command
+\let\oldemph\emph % save the old \emph command
+\renewcommand{\emph}[1]{\textbf{\textit{\textcolor{maroon}{#1}}}}
