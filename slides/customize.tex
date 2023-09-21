@@ -2,11 +2,49 @@
 
 
 \usepackage{amsfonts,amsmath,oldgerm}
-\usepackage{clrscode4e}
+% \usepackage{clrscode4e}
 \usepackage[fontset = fandol]{ctex}
 
 
 \usepackage{import}
+
+\usepackage{minted}
+
+\setminted{
+    linenos = true,
+    autogobble = true,
+    breaklines = true
+}
+
+\setmintedinline{
+    % bgcolor = gray!20,
+    fontsize = \footnotesize,
+    escapeinside=||,
+    mathescape = true,
+}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,       % 设置为 true 以便使用颜色区分链接，而不是使用带框的链接；如果您喜欢带框的链接，将此设置为 false
+    linkcolor=blue,        % 内部链接的颜色，例如目录中的条目
+    filecolor=magenta,     % 文件链接的颜色
+    urlcolor=cyan,         % URL 链接的颜色
+    citecolor=green,       % 文献引用链接的颜色
+    pdftitle={Document Title},    % PDF 文档的标题
+    pdfauthor={Author Name}       % PDF 文档的作者
+}
+\usepackage{tikz}
+
+\usepackage{amssymb}
+\usepackage{booktabs}
+% 设置所有的table字号为footnotesize
+% \let\oldtable\table
+% \let\endoldtable\endtable
+
+% \renewenvironment{table}[1][htbp]
+% {\oldtable[#1]\footnotesize}
+% {\endoldtable}
+
 
 \usetheme{sintef}
 

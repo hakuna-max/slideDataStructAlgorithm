@@ -9,5 +9,25 @@
   "gitlens.codeLens.enabled": false,
 
   // latex
-  "latex-workshop.latex.recipe.default": "latexmk (xelatex)"
+  // "latex-workshop.latex.recipe.default": "latexmk (xelatex)"
+
+  "latex-workshop.latex.tools": [
+    {
+      "name": "xelatexmk",
+      "command": "latexmk",
+      "args": [
+        "-xelatex",
+        "-shell-escape",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOC%"
+      ]
+    }
+  ],
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "XeLatexMk",
+      "tools": ["xelatexmk"]
+    }
+  ]
 }
